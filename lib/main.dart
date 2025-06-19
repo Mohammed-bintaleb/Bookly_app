@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'Features/Splash/presentation/view/splash_view.dart';
+import 'Features/Splash/presentation/views/splash_view.dart';
 import 'constants.dart';
 
 void main() {

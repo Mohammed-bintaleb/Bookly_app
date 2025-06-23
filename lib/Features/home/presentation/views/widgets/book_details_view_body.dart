@@ -1,5 +1,6 @@
 import 'package:bookly_app/Features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/books_action.dart';
+import 'package:bookly_app/Features/home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
@@ -11,15 +12,14 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         children: [
           const CustomBookDetailsAppBar(),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * .2),
-            child: const CustomBookImage(),
+          Align(
+            alignment: Alignment.center,
+            child: SizedBox(width: 240, child: const CustomBookImage()),
           ),
           const SizedBox(height: 43),
           const Text("The Jungle Book", style: Styles.textStyle30),
@@ -38,6 +38,16 @@ class BookDetailsViewBody extends StatelessWidget {
           BookRating(mainAxisAlignment: MainAxisAlignment.center),
           const SizedBox(height: 37),
           BooksAction(),
+          const SizedBox(height: 50),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "You can also like",
+              style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
+            ),
+          ),
+          const SizedBox(height: 16),
+          const SimilarBooksListView(),
         ],
       ),
     );

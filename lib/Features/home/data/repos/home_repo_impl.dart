@@ -11,16 +11,19 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failures, List<BookModel>>> fetchNewestBooks() async {
     try {
+      print("Fetching newest books...");
       var data = await apiService.get(
         endPoint:
             "volumes?Filtering=free-ebooks&Sorting=newest&q=subject:Programming",
       );
+      print("Data fetched: $data");
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
       return right(books);
     } catch (e) {
+      print("Error occurred: $e");
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
@@ -31,15 +34,18 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failures, List<BookModel>>> fetchFeatureBooks() async {
     try {
+      print("Fetching featured books...");
       var data = await apiService.get(
         endPoint: "volumes?Filtering=free-ebooks&q=subject:Programming",
       );
+      print("Data fetched: $data");
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
       return right(books);
     } catch (e) {
+      print("Error occurred: $e");
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }

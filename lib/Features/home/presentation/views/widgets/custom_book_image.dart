@@ -10,8 +10,8 @@ class CustomBookImage extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 2.7 / 4,
       child: CachedNetworkImage(
+        imageUrl: 'https://cors-anywhere.herokuapp.com/$imageUrl',
         fit: BoxFit.fill,
-        imageUrl: imageUrl,
         errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
     );
